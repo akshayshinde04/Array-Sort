@@ -1,39 +1,31 @@
 package com.bl;
 
 public class Algorithm {
-	static void bubbleSort(int[] arr) {
-		int num = arr.length;
-		int temp = 0;
-		for (int i = 0; i < num; i++) {
-			for (int j = 1; j < (num - i); j++) {
-				if (arr[j - 1] > arr[j]) {
-					// swap elements
-					temp = arr[j - 1];
-					arr[j - 1] = arr[j];
-					arr[j] = temp;
-				}
-
+	public int[] insertionSort(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			int num1 = array[i];
+			int temp = i - 1;
+			while (temp >= 0 && array[temp] > num1) {
+				array[temp + 1] = array[temp];
+				temp = temp - 1;
 			}
+			array[temp + 1] = num1;
 		}
+		return array;
+	}
 
+	public void displaySort(int[] array) {
+		for (int num2 : array) {
+			System.out.print(" " + num2);
+		}
+		System.out.println();
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 3, 60, 35, 2, 45, 320, 5 };
+		Algorithm sort = new Algorithm();
 
-		System.out.println("Array Before Bubble Sort");
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-		System.out.println();
-
-		bubbleSort(arr);// sorting array elements using bubble sort
-
-		System.out.println("Array After Bubble Sort");
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i] + " ");
-		}
-
+		int array[] = { 40, 30, 10, 70, 50, 20, 60 };
+		int[] sortedArray = sort.insertionSort(array);
+		sort.displaySort(sortedArray);
 	}
-
 }
